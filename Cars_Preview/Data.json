@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1",
+    "Name": "Bugatti Voiture Noire",
+    "Description": "1 of 1 Car",
+    "BuildYear": "2019",
+    "Price": "18000000",
+    "Color": "Black"
+  }
+]
