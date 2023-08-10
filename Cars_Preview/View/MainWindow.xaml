@@ -7,23 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <!--<DataGrid ItemsSource="{Binding Cars, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-            --><!--<EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>--><!--
+        <DataGrid Margin="10,10,10,42"  AutoGenerateColumns="False" ItemsSource="{Binding CarsCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Width="100" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Description}"/>
-                <DataGridTextColumn Header="Price" Width="100" Binding="{Binding Price}"/>
-            </DataGrid.Columns>
-        </DataGrid>-->
-        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" Margin="10"   ClipboardCopyMode="IncludeHeader" 
-                                            IsSynchronizedWithCurrentItem="True" RowDetailsVisibilityMode="VisibleWhenSelected" EnableRowVirtualization="True" 
-                                            AutoGenerateColumns="False" ItemsSource="{Binding CarsCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
-            <DataGrid.Columns>
-                <DataGridTextColumn  x:Name="Name" Binding="{Binding Name}" Header="Name" Width="Auto"/>
+                <DataGridComboBoxColumn x:Name="Brand" Header="Brand" Width="100" SelectedValueBinding="{Binding brands}"  
+                    DisplayMemberPath="{Binding brands}"/>
+                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Description}"/>
                 <DataGridTextColumn Header="Price" Width="100" Binding="{Binding Price}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Margin="350,376,350,10" Click="Button_Click" >Save</Button>
 
     </Grid>
 </Window>

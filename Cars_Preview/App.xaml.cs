@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Cars_Preview.ViewModel;
 
 namespace Cars_Preview
 {
@@ -13,5 +14,6 @@ namespace Cars_Preview
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

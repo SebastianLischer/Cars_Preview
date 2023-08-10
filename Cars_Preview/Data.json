@@ -6,5 +6,85 @@
     "BuildYear": "2019",
     "Price": "18000000",
     "Color": "Black"
+  },
+  {
+    "Id": "2",
+    "Name": "Lamborghini Aventador SVJ",
+    "Description": "Supercar with extreme performance",
+    "BuildYear": "2022",
+    "Price": "500000",
+    "Color": "Yellow"
+  },
+  {
+    "Id": "3",
+    "Name": "Ferrari 812 Superfast",
+    "Description": "V12-powered grand tourer",
+    "BuildYear": "2020",
+    "Price": "350000",
+    "Color": "Red"
+  },
+  {
+    "Id": "4",
+    "Name": "Porsche 911 Turbo S",
+    "Description": "High-performance sports car",
+    "BuildYear": "2021",
+    "Price": "250000",
+    "Color": "Blue"
+  },
+  {
+    "Id": "5",
+    "Name": "McLaren 720S",
+    "Description": "Mid-engine supercar",
+    "BuildYear": "2019",
+    "Price": "300000",
+    "Color": "Orange"
+  },
+  {
+    "Id": "6",
+    "Name": "Aston Martin DBS Superleggera",
+    "Description": "Luxury grand tourer",
+    "BuildYear": "2022",
+    "Price": "400000",
+    "Color": "Silver"
+  },
+  {
+    "Id": "7",
+    "Name": "Mercedes-AMG GT R",
+    "Description": "High-performance coupe",
+    "BuildYear": "2021",
+    "Price": "180000",
+    "Color": "Green"
+  },
+  {
+    "Id": "8",
+    "Name": "Bentley Continental GT",
+    "Description": "Luxury convertible",
+    "BuildYear": "2023",
+    "Price": "320000",
+    "Color": "White"
+  },
+  {
+    "Id": "9",
+    "Name": "Rolls-Royce Phantom",
+    "Description": "Ultimate luxury sedan",
+    "BuildYear": "2020",
+    "Price": "600000",
+    "Color": "Black"
+  },
+  {
+    "Id": "10",
+    "Name": "Pagani Huayra",
+    "Description": "Exotic hypercar",
+    "BuildYear": "2022",
+    "Price": "2800000",
+    "Color": "Silver"
+  },
+  {
+    "Id": "11",
+    "Name": "Koenigsegg Jesko",
+    "Description": "High-performance track-focused car",
+    "BuildYear": "2023",
+    "Price": "4500000",
+    "Color": "Blue"
   }
 ]

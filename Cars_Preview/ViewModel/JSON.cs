@@ -18,10 +18,20 @@ namespace Cars_Preview.ViewModel
             string json = File.ReadAllText("../Data.json");
             
             return JsonConvert.DeserializeObject<List<Car>>(json);
+
                 
         }
 
-       
+        //public List<Preview_Car> Preview_CarData()
+        //{
+        //    List<Car> cars = JsonCarData();
+        //    List<Preview_Car> carPreview = new List<Preview_Car>();
+        //    foreach (Car car in cars)
+        //    {
+        //        carPreview.Add(new Preview_Car() { Name = car.Name, Description = car.Description, Price = car.Price });
+        //    }
+        //    return carPreview;
+        //}
 
 
 
