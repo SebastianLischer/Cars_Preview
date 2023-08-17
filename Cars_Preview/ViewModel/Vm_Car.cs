@@ -23,10 +23,11 @@ namespace Cars_Preview.ViewModel
         public Vm_Car()
         {
             this.loadCars();
+            this.loadBrands();
         }
 
         public List<Car> CarsCollection { get; set; }
-        public List<string> brands { get; set; }
+        public List<Brand> BrandCollection { get; set; }
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             var handler = PropertyChanged;
@@ -36,33 +37,35 @@ namespace Cars_Preview.ViewModel
             }
         }
 
-        string path = "../Data.json";
+        string carsPath = "../Data.json";
         public void loadCars()
         {
-            //_CarsCollection.Add(new Car() { Name = "Audi", Description = "moderner Sportwagen", Price = 444444 });
-            //_CarsCollection.Add(new Car() { Name = "Porsche", Description = "moderner Sportwagen", Price = 444444 });
-            //_CarsCollection.Add(new Car() { Name = "Bugatti", Description = "moderner Sportwagen", Price = 444444 });
-            //_CarsCollection.Add(new Car() { Name = "VW", Description = "moderner Sportwagen", Price = 444444 });
-
-            string json = File.ReadAllText(path);
+            string json = File.ReadAllText(carsPath);
             CarsCollection = JsonConvert.DeserializeObject<List<Car>>(json);
+        }
+        string brandsPath = "../Brands.json";
+        public void loadBrands()
+        {
+
+            string json = File.ReadAllText(brandsPath);
+            BrandCollection = JsonConvert.DeserializeObject<List<Brand>>(json);
         }
 
         public void safeCars()
         {
-            File.WriteAllText(path, JsonConvert.SerializeObject(CarsCollection));
+            File.WriteAllText(carsPath, JsonConvert.SerializeObject(CarsCollection));
         }
 
-        public List<string> getBrand()
-        {
+        //public List<string> getBrand()
+        //{
             
-            brands = new List<string>();
-            foreach (var car in CarsCollection)
-            {
-                brands.Add(car.Brand);
-            }
-            return brands;
-        }
+        //    Brand = new List<string>();
+        //    foreach (var car in CarsCollection)
+        //    {
+        //        Brand.Add(car.Brand);
+        //    }
+        //    return Brand;
+        //}
 
     }
 

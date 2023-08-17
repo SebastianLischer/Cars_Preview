@@ -11,23 +11,12 @@ namespace Cars_Preview.Model
     internal class Car
     {
         public int Id { get; set; }
-        public string Brand { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
+        public int BrandId { get; set; }
+        public string CarName { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public int BuildYear { get; set; }
         public int Price { get; set; }
         public string Color { get; set; } = string.Empty;
-
-
-        //public Car(int id, string name, string description, int buildYear, int price, string color)
-        //{
-        //    Id = id;
-        //    Name = name;
-        //    Description = description;
-        //    BuildYear = buildYear;
-        //    Price = price;
-        //    Color = color;
-        //}
 
     }
 }

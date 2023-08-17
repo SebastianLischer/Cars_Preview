@@ -8,15 +8,34 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <DataGrid Margin="10,10,10,42"  AutoGenerateColumns="False" ItemsSource="{Binding CarsCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridComboBoxColumn x:Name="Brand" Header="Brand" Width="100" SelectedValueBinding="{Binding brands}"  
-                    DisplayMemberPath="{Binding brands}"/>
-                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding Name}"/>
+                <DataGridComboBoxColumn Header="Brand"
+                                SelectedValueBinding="{Binding BrandId}" 
+                                DisplayMemberPath="Name" 
+                                SelectedValuePath="Id">
+
+                    <DataGridComboBoxColumn.ElementStyle>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="ItemsSource" Value="{Binding Path=DataContext.BrandCollection, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" />
+                        </Style>
+                    </DataGridComboBoxColumn.ElementStyle>
+                    <DataGridComboBoxColumn.EditingElementStyle>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="ItemsSource" Value="{Binding Path=DataContext.BrandCollection, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" />
+                        </Style>
+                    </DataGridComboBoxColumn.EditingElementStyle>
+                </DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding CarName}"/>
                 <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Description}"/>
                 <DataGridTextColumn Header="Price" Width="100" Binding="{Binding Price}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Margin="350,376,350,10" Click="Button_Click" >Save</Button>
+        <Button Margin="350,376,350,10" Click="Button_Save_Click" >Save</Button>
 
     </Grid>
 </Window>
