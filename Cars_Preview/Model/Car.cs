@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Cars_Preview.Model
 {
-    internal class Car
+    public class Car
     {
         public int Id { get; set; }
         public int BrandId { get; set; }

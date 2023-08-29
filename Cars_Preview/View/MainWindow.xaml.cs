@@ -15,10 +15,10 @@ namespace Cars_Preview.View
 
     public partial class MainWindow : Window
     {
-        Vm_Car vm_Car = new Vm_Car();
+        Vm_Car vm_Car = new();
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();//
             this.DataContext = vm_Car;
         }
 
@@ -29,8 +29,15 @@ namespace Cars_Preview.View
 
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            EditWindow ew = new EditWindow();
+            Car car = (Car)dg_preview.SelectedItem;
+            EditWindow ew = new(car);
             ew.Show();
+        }
+
+        private void Button_EditBrands_Click(object sender, RoutedEventArgs e)
+        {
+            EditBrands eb = new();
+            eb.Show();
         }
     }
 }

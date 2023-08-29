@@ -6,19 +6,53 @@
         xmlns:local="clr-namespace:Cars_Preview.View"
         mc:Ignorable="d"
         Title="EditWindow" Height="450" Width="800">
-    <Grid>
-        <DataGrid Margin="10,10,10,42"  AutoGenerateColumns="False" ItemsSource="{Binding CarsCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem}"  >
+    <Grid Margin="40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="135" />
+            <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+                <TextBlock Text="Name:" Grid.Column="0" Margin="10,10,10,10" TextAlignment="Right" />
+        <TextBox Margin="8" Text="{Binding SelectedCar.CarName, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"/>
+        <TextBlock Text="Description:" Grid.Row="1" Grid.Column="0" Margin="10,10,10,10" TextAlignment="Right"/>
+        <TextBox Margin="8" Text="{Binding SelectedCar.Description, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" TextWrapping="WrapWithOverflow"/>
+        <TextBlock Text="BuildYear:" Grid.Column="0" Grid.Row="2" Margin="10,10,10,10" TextAlignment="Right"/>
+        <TextBox Margin="8" Text="{Binding SelectedCar.BuildYear, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" PreviewTextInput="NumericOnly"/>
+        <TextBlock Text="Price:" Grid.Column="3" Margin="10,10,10,10" TextAlignment="Right"/>
+        <TextBox Margin="8" Text="{Binding SelectedCar.Price, Mode=TwoWay}" Grid.Row="0" Grid.Column="4" PreviewTextInput="NumericOnly"/>
+        <TextBlock Text="Color:" Grid.Column="3" Grid.Row="1" Margin="10,10,10,10" TextAlignment="Right"/>
+        <TextBox Margin="8" Text="{Binding SelectedCar.Color, Mode=TwoWay}" Grid.Row="1" Grid.Column="4"/>
+        <TextBlock x:Name="tb_error" Text="" Grid.Row="3" Grid.Column="2" Margin="10,10,10,10" />
+        <Button Content="Save" Grid.Row="4" Grid.Column="2" Click="Button_Click" HorizontalAlignment="Center" Height="50" VerticalAlignment="Top" Width="134"
+                Background="#FF64CCF1"
+                Foreground="White"
+                FontFamily="Arial">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+        <!--<DataGrid Margin="10,10,10,42"  AutoGenerateColumns="False" ItemsSource="{Binding SelectedCar, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" Width="200" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Header="Brand" Width="200" Binding="{Binding Brand}"/>
-                    <DataGridTextColumn Header="Name" Width="200" Binding="{Binding CarName}"/>
+                <DataGridTextColumn Header="Id" Width="200" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding CarName}"/>
                     <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Description}"/>
                     <DataGridTextColumn Header="BuildYear" Width="200" Binding="{Binding BuildYear}"/>
                     <DataGridTextColumn Header="Price" Width="100" Binding="{Binding Price}"/>
                     <DataGridTextColumn Header="Color" Width="200" Binding="{Binding Color}"/>
                 </DataGrid.Columns>
-            </DataGrid>
-            <Button Margin="350,376,350,10" Click="Button_Click" >Save</Button>
-
-        </Grid>
+            </DataGrid>-->
+            
 </Window>

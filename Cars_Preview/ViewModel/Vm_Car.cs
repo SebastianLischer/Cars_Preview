@@ -28,6 +28,7 @@ namespace Cars_Preview.ViewModel
 
         public List<Car> CarsCollection { get; set; }
         public List<Brand> BrandCollection { get; set; }
+
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             var handler = PropertyChanged;
@@ -55,18 +56,6 @@ namespace Cars_Preview.ViewModel
         {
             File.WriteAllText(carsPath, JsonConvert.SerializeObject(CarsCollection));
         }
-
-        //public List<string> getBrand()
-        //{
-            
-        //    Brand = new List<string>();
-        //    foreach (var car in CarsCollection)
-        //    {
-        //        Brand.Add(car.Brand);
-        //    }
-        //    return Brand;
-        //}
-
     }
 
 
