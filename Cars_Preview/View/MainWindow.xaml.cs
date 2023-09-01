@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Cars_Preview.Global;
 using Cars_Preview.Model;
 using Cars_Preview.ViewModel;
 
@@ -29,7 +30,7 @@ namespace Cars_Preview.View
 
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Car car = (Car)dg_preview.SelectedItem;
+            Car car = (Car)dgPreview.SelectedItem;
             EditWindow ew = new(car);
             ew.Show();
         }
@@ -38,6 +39,18 @@ namespace Cars_Preview.View
         {
             EditBrands eb = new();
             eb.Show();
+            //When the EditBrands window is closed, the datagrid is refreshed
+            eb.Closed += (s, args) => { vm_Car.refreshBrands(dgPreview); };
         }
+        private void NumericOnly(System.Object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            validateEntry.NumericOnly(e);
+        }
+
+        private void AlphaNumericOnly(System.Object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            validateEntry.AlphaNumericOnly(e);
+        }
+
     }
 }

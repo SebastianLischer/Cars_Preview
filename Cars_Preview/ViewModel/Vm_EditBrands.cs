@@ -18,35 +18,34 @@ namespace Cars_Preview.ViewModel
     internal class Vm_EditBrands : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-        public ObservableCollection<Brand> BrandsCollection { get; set; }
 
-        
+
         public Vm_EditBrands()
         {
             loadBrands();
-            //BrandsCollection.CollectionChanged += BrandsCollection_CollectionChanged;
+        }
+        public List<Brand> _BrandsCollection { get; set; }
+        //add value to _BrandsCollection
+
+
+        public List<Brand> BrandsCollection
+        {
+            get { return BrandsCollection; }
+            set
+            {
+                BrandsCollection = value;
+                OnPropertyChanged();
+                
+            }
         }
 
-        //private void BrandsCollection_CollectionChanged(/*object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e*/)
-        //{
-        //    if (e.Action == NotifyCollectionChangedAction.Add)
-        //    {
-        //        foreach (Brand newItem in e.NewItems)
-        //        {
-        //           if(validateBrandId(newItem.Id))
-        //            {
-        //                BrandsCollection.RemoveAt(BrandsCollection.Count - 1);
-        //            }
-        //        }
-        //    }
-        //}
 
         string brandsPath = "../Brands.json";
         public void loadBrands()
         {
 
             string json = File.ReadAllText(brandsPath);
-            BrandsCollection = JsonConvert.DeserializeObject<ObservableCollection<Brand>>(json);
+            BrandsCollection = JsonConvert.DeserializeObject<List<Brand>>(json);
         }
         public void safeBrands()
         {
@@ -69,9 +68,10 @@ namespace Cars_Preview.ViewModel
         }
 
         //Validate Brand Id and check if it is already in use
-        public bool validateBrandId(int id)
+        public bool validateBrandId(List<Brand> brandList)
         {
-            if (id < 0)
+            int lastAddedId = brandList.Count > 0 ? brandList[brandList.Count - 1].Id : -1;
+            if (lastAddedId < 0)
             {
                 MessageBox.Show("Id must be greater than 0");
                 return false;
@@ -80,7 +80,7 @@ namespace Cars_Preview.ViewModel
             {
                 foreach (Brand brand in BrandsCollection)
                 {
-                    if (brand.Id == id)
+                    if (brand.Id == lastAddedId)
                     {
                         MessageBox.Show("Id already in use");
                         return false;

@@ -19,10 +19,12 @@ namespace Cars_Preview.ViewModel
         public Vm_EditCar()
         {
             loadCars();
+            loadBrands();
         }
 
         public List<Car> CarsCollection { get; set; }
         public Car SelectedCar { get; set; }
+        public List<Brand> BrandCollection { get; set; }
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
@@ -38,6 +40,7 @@ namespace Cars_Preview.ViewModel
             string json = File.ReadAllText(carsPath);
             CarsCollection = JsonConvert.DeserializeObject<List<Car>>(json);
         }
+        
         public void safeCars()
         {
             Car carToEdit = CarsCollection.FirstOrDefault(car => car.Id == SelectedCar.Id);
@@ -61,5 +64,13 @@ namespace Cars_Preview.ViewModel
             
             File.WriteAllText(carsPath, JsonConvert.SerializeObject(CarsCollection));
         }
+        string brandsPath = "../Brands.json";
+        public void loadBrands()
+        {
+
+            string json = File.ReadAllText(brandsPath);
+            BrandCollection = JsonConvert.DeserializeObject<List<Brand>>(json);
+        }
+
     }
 }

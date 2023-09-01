@@ -1,5 +1,6 @@
 ﻿using Cars_Preview.ViewModel;
 using Cars_Preview.Model;
+using Cars_Preview.Global;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,17 +34,15 @@ namespace Cars_Preview.View
         {
             vm_EditCar.safeCars();//Muss der Vm_EditCar übergeben werden???
         }
+
         private void NumericOnly(System.Object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
-            e.Handled = IsTextNumeric(e.Text);
-
+            validateEntry.NumericOnly(e);
         }
 
-        private static bool IsTextNumeric(string str)
+        private void AlphaNumericOnly(System.Object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
-            System.Text.RegularExpressions.Regex reg = new System.Text.RegularExpressions.Regex("[^0-9]");
-            return reg.IsMatch(str);
-
+            validateEntry.AlphaNumericOnly(e);
         }
 
         //set error message in the tb_error textblock
@@ -60,6 +59,10 @@ namespace Cars_Preview.View
             }
         }
 
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+
+        }
     }
 
     

@@ -18,8 +18,9 @@
             <RowDefinition Height="300"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="dg_brands" ItemsSource="{Binding BrandsCollection}" Grid.Row="1" Grid.Column="1">
-            <!-- Define DataGrid columns for other properties -->
+        <DataGrid x:Name="dg_brands" ItemsSource="{Binding BrandsCollection}" Grid.Row="1" Grid.Column="1" PreviewTextInput="AlphaNumericOnly">
+            <DataGridTextColumn Header="Id" Width="200" Binding="{Binding Id}" IsReadOnly="True"/>
+            <DataGridTextColumn Header="Brand" Width="200" Binding="{Binding Name}" />
         </DataGrid>
         <Button Grid.Row="2" Grid.Column="1" Margin="10" Click="Button_Save_Click" >Save</Button>
         <Button Grid.Row="2" Grid.Column="2" Margin="15" Content="Delete Selected" Click="DeleteSelected_Click" />

@@ -56,6 +56,14 @@ namespace Cars_Preview.ViewModel
         {
             File.WriteAllText(carsPath, JsonConvert.SerializeObject(CarsCollection));
         }
+        //refresh datagrid
+        public void refreshBrands(DataGrid dataGrid)
+        {
+            loadCars();
+            loadBrands();
+            dataGrid.Items.Refresh();
+        }
+
     }
 
 

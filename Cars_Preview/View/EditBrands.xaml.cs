@@ -1,4 +1,5 @@
-﻿using Cars_Preview.Model;
+﻿using Cars_Preview.Global;
+using Cars_Preview.Model;
 using Cars_Preview.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,15 @@ namespace Cars_Preview.View
                 vm_EditBrands.deleteBrand(selectedCar);
                 dg_brands.Items.Refresh();
             }
+        }
+        private void NumericOnly(System.Object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            validateEntry.NumericOnly(e);
+        }
+
+        private void AlphaNumericOnly(System.Object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            validateEntry.AlphaNumericOnly(e);
         }
     }
 }

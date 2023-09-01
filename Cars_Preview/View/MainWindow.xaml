@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="dg_preview" Margin="10,10,10,42"  AutoGenerateColumns="False" ItemsSource="{Binding CarsCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedCar}"  >
+        <DataGrid Name="dgPreview" Margin="10,10,10,42"  AutoGenerateColumns="False" ItemsSource="{Binding CarsCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedCar}"  >
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
@@ -30,9 +30,27 @@
                         </Style>
                     </DataGridComboBoxColumn.EditingElementStyle>
                 </DataGridComboBoxColumn>
-                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding CarName}"/>
-                <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Description}"/>
-                <DataGridTextColumn Header="Price" Width="100" Binding="{Binding Price}"/>
+                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding CarName}">
+                    <DataGridTextColumn.EditingElementStyle>
+                        <Style TargetType="TextBox">
+                            <EventSetter Event="PreviewTextInput" Handler="AlphaNumericOnly" />
+                        </Style>
+                    </DataGridTextColumn.EditingElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Description}">
+                    <DataGridTextColumn.EditingElementStyle>
+                        <Style TargetType="TextBox">
+                            <EventSetter Event="PreviewTextInput" Handler="AlphaNumericOnly" />
+                        </Style>
+                    </DataGridTextColumn.EditingElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Price" Width="100" Binding="{Binding Price}">
+                    <DataGridTextColumn.EditingElementStyle>
+                        <Style TargetType="TextBox">
+                            <EventSetter Event="PreviewTextInput" Handler="NumericOnly" />
+                        </Style>
+                    </DataGridTextColumn.EditingElementStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button Margin="350,376,350,10" Click="Button_Save_Click" >Save</Button>
