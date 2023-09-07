@@ -11,12 +11,12 @@ namespace Cars_Preview.Model
     public class Car
     {
         public int Id { get; set; }
-        public int BrandId { get; set; }
+        public int ? BrandId { get; set; }
         public string CarName { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
+        public string ? Description { get; set; }
         public int BuildYear { get; set; }
         public int Price { get; set; }
-        public string Color { get; set; } = string.Empty;
+        public string ? Color { get; set; }
 
     }
 }

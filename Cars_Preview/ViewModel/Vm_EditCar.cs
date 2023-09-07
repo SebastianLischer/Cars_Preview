@@ -9,67 +9,38 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Cars_Preview.ViewModel
 {
-    internal class Vm_EditCar : INotifyPropertyChanged
+    internal class Vm_EditCar : ParrentClass
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public Vm_EditCar()
-        {
-            loadCars();
-            loadBrands();
-        }
-
         public List<Car> CarsCollection { get; set; }
         public Car SelectedCar { get; set; }
         public List<Brand> BrandCollection { get; set; }
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        public Vm_EditCar()
         {
-            var handler = PropertyChanged;
-            if (handler != null && name != null)
+            CarsCollection = loadCars();
+            BrandCollection = loadBrands();
+            if(SelectedCar?.CarName == "")
             {
-                handler(this, new PropertyChangedEventArgs(name));
+                MessageBox.Show("CarName not found");
             }
-        }
-        string carsPath = "../Data.json";
-        public void loadCars()
-        {
-            string json = File.ReadAllText(carsPath);
-            CarsCollection = JsonConvert.DeserializeObject<List<Car>>(json);
         }
         
         public void safeCars()
         {
-            Car carToEdit = CarsCollection.FirstOrDefault(car => car.Id == SelectedCar.Id);
-            if (carToEdit != null)
+            if (SelectedCar.CarName != "")
             {
-                carToEdit.BrandId = SelectedCar.BrandId;
-                carToEdit.CarName = SelectedCar.CarName;
-                carToEdit.Description = SelectedCar.Description;
-                carToEdit.BuildYear = SelectedCar.BuildYear;
-                carToEdit.Price = SelectedCar.Price;
-                carToEdit.Color = SelectedCar.Color;
-
+                CarsCollection[CarsCollection.FindIndex(car => car.Id == SelectedCar.Id)] = SelectedCar;
             }
             else
             {
-                EditWindow editWindow = new(SelectedCar);
-                editWindow.set_tb_error("Car not found");
+
+                MessageBox.Show("CarName not found");
             }
             
-
-            
             File.WriteAllText(carsPath, JsonConvert.SerializeObject(CarsCollection));
-        }
-        string brandsPath = "../Brands.json";
-        public void loadBrands()
-        {
-
-            string json = File.ReadAllText(brandsPath);
-            BrandCollection = JsonConvert.DeserializeObject<List<Brand>>(json);
         }
 
     }

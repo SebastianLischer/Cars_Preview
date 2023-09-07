@@ -7,7 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid Name="dgPreview" Margin="10,10,10,42"  AutoGenerateColumns="False" ItemsSource="{Binding CarsCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedCar}"  >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="77"/>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="0" Name="dgPreview" Margin="10,10,10,20"  AutoGenerateColumns="False" ItemsSource="{Binding CarsCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedCar}"  >
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
@@ -53,8 +60,18 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Margin="350,376,350,10" Click="Button_Save_Click" >Save</Button>
-        <Button Margin="678,376,38,10" Click="Button_EditBrands_Click" >Edit Brands</Button>
-
+        <Button Grid.Row="1" Width="80" Margin="10" Click="Button_Save_Click" >Save</Button>
+        <Button Grid.Row="1" Width="150" Margin="50,10,580,10" Click="Button_EditBrands_Click" Background="#FF64CCF1"
+                Foreground="White"
+                FontFamily="Arial"
+                Content="Edit Brand" HorizontalAlignment="Center"
+ >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label x:Name="lb_error" Grid.Row="1" Margin="607,10,64,10" Width="129"/>
     </Grid>
 </Window>

@@ -23,7 +23,8 @@ namespace Cars_Preview.View
     public partial class EditBrands : Window
     {
         Vm_EditBrands vm_EditBrands = new();
-        public EditBrands()
+        private int nextID = 1;
+        public EditBrands() 
         {
             InitializeComponent();
             this.DataContext = vm_EditBrands;

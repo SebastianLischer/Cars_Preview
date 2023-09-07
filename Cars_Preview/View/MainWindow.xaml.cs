@@ -37,7 +37,7 @@ namespace Cars_Preview.View
 
         private void Button_EditBrands_Click(object sender, RoutedEventArgs e)
         {
-            EditBrands eb = new();
+            EditBrands eb = new EditBrands();
             eb.Show();
             //When the EditBrands window is closed, the datagrid is refreshed
             eb.Closed += (s, args) => { vm_Car.refreshBrands(dgPreview); };
@@ -51,6 +51,5 @@ namespace Cars_Preview.View
         {
             validateEntry.AlphaNumericOnly(e);
         }
-
     }
 }

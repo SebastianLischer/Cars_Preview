@@ -8,58 +8,32 @@ using System.Security.RightsManagement;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Shapes;
 using Cars_Preview.Model;
 using Cars_Preview.View;
 using Newtonsoft.Json;
 
 namespace Cars_Preview.ViewModel
 {
-    class Vm_Car : INotifyPropertyChanged
+    class Vm_Car : ParrentClass
     {
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-
-        public Vm_Car()
-        {
-            this.loadCars();
-            this.loadBrands();
-        }
-
         public List<Car> CarsCollection { get; set; }
         public List<Brand> BrandCollection { get; set; }
 
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        public Vm_Car()
         {
-            var handler = PropertyChanged;
-            if (handler != null && name != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
-        }
-
-        string carsPath = "../Data.json";
-        public void loadCars()
-        {
-            string json = File.ReadAllText(carsPath);
-            CarsCollection = JsonConvert.DeserializeObject<List<Car>>(json);
-        }
-        string brandsPath = "../Brands.json";
-        public void loadBrands()
-        {
-
-            string json = File.ReadAllText(brandsPath);
-            BrandCollection = JsonConvert.DeserializeObject<List<Brand>>(json);
+            CarsCollection = loadCars();
+            BrandCollection = loadBrands();
         }
 
         public void safeCars()
         {
             File.WriteAllText(carsPath, JsonConvert.SerializeObject(CarsCollection));
         }
-        //refresh datagrid
+
         public void refreshBrands(DataGrid dataGrid)
         {
-            loadCars();
+            CarsCollection = loadCars();
             loadBrands();
             dataGrid.Items.Refresh();
         }

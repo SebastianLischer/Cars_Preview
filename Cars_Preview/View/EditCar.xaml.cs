@@ -32,7 +32,7 @@ namespace Cars_Preview.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            vm_EditCar.safeCars();//Muss der Vm_EditCar übergeben werden???
+            this.vm_EditCar.safeCars();//Muss der Vm_EditCar übergeben werden???
         }
 
         private void NumericOnly(System.Object sender, System.Windows.Input.TextCompositionEventArgs e)
@@ -48,7 +48,7 @@ namespace Cars_Preview.View
         //set error message in the tb_error textblock
         public void set_tb_error(string message)
         {
-            if (tb_error.Text != "")
+            if (tb_error.Text == "")
             {
                 tb_error.Text = message;
                 tb_error.Visibility = Visibility.Visible;
@@ -58,12 +58,5 @@ namespace Cars_Preview.View
                 tb_error.Visibility = Visibility.Hidden;
             }
         }
-
-        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-
-        }
     }
-
-    
 }
