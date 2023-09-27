@@ -43,5 +43,7 @@ namespace Cars_Preview.ViewModel
             File.WriteAllText(carsPath, JsonConvert.SerializeObject(CarsCollection));
         }
 
+
+
     }
 }

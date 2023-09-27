@@ -3,6 +3,7 @@ using Cars_Preview.Model;
 using Cars_Preview.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,8 +29,25 @@ namespace Cars_Preview.View
         {
             InitializeComponent();
             this.DataContext = vm_EditBrands;
+            vm_EditBrands.BrandsCollection = new ObservableCollection<Brand>();
+            dg_brands.ItemsSource = vm_EditBrands.BrandsCollection;
+            dg_brands.AddingNewItem += DataGrid_AddingNewItem;
         }
 
+        private void DataGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
+        {
+            // Find the maximum ID value in the current data items
+            int maxId = vm_EditBrands.BrandsCollection.Count > 0 ? vm_EditBrands.BrandsCollection.Max(item => item.Id) : 0;
+
+            // Increment the ID for the new item
+            var newItem = new Brand { Id = maxId + 1 };
+
+            // Add the new item to the collection
+            vm_EditBrands.BrandsCollection.Add(newItem);
+
+            // Set the newly created item as the added item
+            e.NewItem = newItem;
+        }
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
 

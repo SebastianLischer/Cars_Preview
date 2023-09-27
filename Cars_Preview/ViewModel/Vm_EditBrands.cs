@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -10,14 +11,26 @@ namespace Cars_Preview.ViewModel
 {
     internal class Vm_EditBrands : ParrentClass
     {
-        public List<Brand> BrandsCollection { get; set; }
+        public ObservableCollection<Brand> BrandsCollection { get; set; }
 
         public Vm_EditBrands()
         {
-            BrandsCollection = loadBrands();
+            BrandsCollection = LoadBrands();
         }
 
-        
+        public ObservableCollection<Brand> LoadBrands()
+        {
+            try
+            {
+                string json = File.ReadAllText(brandsPath);
+                return JsonConvert.DeserializeObject<ObservableCollection<Brand>>(json);
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("File not found");
+                return null;
+            }
+        }
         public void safeBrands()
         {
             File.WriteAllText(brandsPath, JsonConvert.SerializeObject(BrandsCollection));
