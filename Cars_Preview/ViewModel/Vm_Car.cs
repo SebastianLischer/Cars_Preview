@@ -22,8 +22,10 @@ namespace Cars_Preview.ViewModel
 
         public Vm_Car()
         {
-            CarsCollection = loadCars();
-            BrandCollection = loadBrands();
+            var carsCollection = this.loadJson<List<Car>>(typeof(Car));
+            CarsCollection = carsCollection;
+            var brandCollection = this.loadJson<List<Brand>>(typeof(Brand));
+            BrandCollection = brandCollection;
         }
 
         public void safeCars()
@@ -33,13 +35,12 @@ namespace Cars_Preview.ViewModel
 
         public void refreshBrands(DataGrid dataGrid)
         {
-            CarsCollection = loadCars();
-            loadBrands();
+            var carsCollection = this.loadJson<List<Car>>(typeof(Car));
+            CarsCollection = carsCollection;
+            var brandCollection = this.loadJson<List<Brand>>(typeof(Brand));
+            BrandCollection = brandCollection;
             dataGrid.Items.Refresh();
         }
-
     }
-
-
 }
 

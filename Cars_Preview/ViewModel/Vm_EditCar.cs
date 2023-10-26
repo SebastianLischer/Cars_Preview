@@ -20,9 +20,11 @@ namespace Cars_Preview.ViewModel
         public List<Brand> BrandCollection { get; set; }
         public Vm_EditCar()
         {
-            CarsCollection = loadCars();
-            BrandCollection = loadBrands();
-            if(SelectedCar?.CarName == "")
+            var carsCollection = this.loadJson<List<Car>>(typeof(Car));
+            CarsCollection = carsCollection;
+            var brandCollection = this.loadJson<List<Brand>>(typeof(Brand));
+            BrandCollection = brandCollection;
+            if (SelectedCar?.CarName == "")
             {
                 MessageBox.Show("CarName not found");
             }

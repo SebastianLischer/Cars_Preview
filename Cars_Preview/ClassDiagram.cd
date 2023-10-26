@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Cars_Preview.Model.Brand">
+    <Position X="5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Brand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cars_Preview.Model.Car">
+    <Position X="3.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAAQAgAAAAAAAAAAAAAAAAAAAAAAAAgAAQgAA=</HashCode>
+      <FileName>Model\Car.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cars_Preview.Model.ParrentClass">
+    <Position X="1.5" Y="1" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="Cars_Preview.Model.ParrentClass.UiUpdateNotification">
+        <TypeIdentifier>
+          <NewMemberFileName>Model\ParrentClass.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAoIACAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ParrentClass.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Cars_Preview.ViewModel.Vm_Car">
+    <Position X="1.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEEAAAAAACAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Vm_Car.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

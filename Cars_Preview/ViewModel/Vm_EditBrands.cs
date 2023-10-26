@@ -11,25 +11,12 @@ namespace Cars_Preview.ViewModel
 {
     internal class Vm_EditBrands : ParrentClass
     {
-        public ObservableCollection<Brand> BrandsCollection { get; set; }
+        public List<Brand> BrandsCollection { get; set; }
 
         public Vm_EditBrands()
         {
-            BrandsCollection = LoadBrands();
-        }
-
-        public ObservableCollection<Brand> LoadBrands()
-        {
-            try
-            {
-                string json = File.ReadAllText(brandsPath);
-                return JsonConvert.DeserializeObject<ObservableCollection<Brand>>(json);
-            }
-            catch (FileNotFoundException)
-            {
-                MessageBox.Show("File not found");
-                return null;
-            }
+            var brandCollection = this.loadJson<List<Brand>>(typeof(Brand));
+            BrandsCollection = brandCollection;
         }
         public void safeBrands()
         {

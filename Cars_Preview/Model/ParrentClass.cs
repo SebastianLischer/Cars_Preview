@@ -1,13 +1,10 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System.Text.Json;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using System;
+using System.Linq;
 
 namespace Cars_Preview.Model
 {
@@ -16,34 +13,40 @@ namespace Cars_Preview.Model
         public string carsPath = "../Data.json";
         public string brandsPath = "../Brands.json";
 
+        public delegate void UiUpdateNotification(string message);
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public List<Car> loadCars()
+        public event UiUpdateNotification uiUpdateNotification;
+        //Parameter Definieren??? WO??
+
+        public T loadJson<T>(Type type)
         {
+            string jsonString;
             try
             {
-                string json = File.ReadAllText(carsPath);
-                return JsonConvert.DeserializeObject<List<Car>>(json);
+                if(type == typeof(Car))
+                {
+                    jsonString = File.ReadAllText(carsPath);
+                }
+                else
+                {
+                    jsonString = File.ReadAllText(brandsPath);
+                }
+                T objectList = JsonSerializer.Deserialize<T>(jsonString)!;
+                return objectList;
             }
             catch (FileNotFoundException)
             {
                 MessageBox.Show("File not found");
-                return null;
+                return (T)Activator.CreateInstance(typeof(T));
             }
         }
 
-        public List<Brand> loadBrands()
+
+        private void errorMessage(string message) 
         {
-            try
-            {
-                string json = File.ReadAllText(brandsPath);
-                return JsonConvert.DeserializeObject<List<Brand>>(json);
-            }
-            catch (FileNotFoundException)
-            {
-                MessageBox.Show("File not found");
-                return null;
-            }
+            MessageBox.Show(message);
         }
     }
 }
